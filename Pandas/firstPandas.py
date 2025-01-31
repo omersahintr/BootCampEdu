@@ -55,10 +55,10 @@ print(f"Winner is {result[result == pd.Series.max(result)]}")
 
 ## Pandas Series Operations with Different indexes
 
-serie1 = pd.Series(data=[100,200,300], index=["London","Tokyo","New York"])
-serie2 = pd.Series(data=[140,250,410], index=["London","Tokyo","Istanbul"])
+series1 = pd.Series(data=[100,200,300], index=["London","Tokyo","New York"])
+series2 = pd.Series(data=[140,250,410], index=["London","Tokyo","Istanbul"])
 
-operation = serie1 + serie2
+operation = series1 + series2
 
 print(operation) # Istanbul      NaN
                  # London      240.0
