@@ -46,7 +46,7 @@ print(new_data_frame.fillna(20))
                 # 1  50.0      20.0       30   20.0
                 # 2  20.0      40.0       40   20.0
 
-# Group Data
+# Group Data Operations
 sales_data = {"Code":["C++","PHP","Python","PHP","C++","PHP"],"Names":["Neo","Morpheus","Trinity","Smith","Adam","Joe"], "Money":[250,120,200,350,300,100]}
 sales_data_frame = pd.DataFrame(sales_data)
 print(sales_data_frame)
@@ -106,3 +106,4 @@ print(groups.describe().transpose())
                 #       50%    275.000000  120.00000   200.0
                 #       75%    287.500000  235.00000   200.0
                 #       max    300.000000  350.00000   200.0
+
