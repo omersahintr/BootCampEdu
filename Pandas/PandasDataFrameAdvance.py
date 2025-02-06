@@ -106,3 +106,5 @@ print(groups.describe().transpose())
                 #       50%    275.000000  120.00000   200.0
                 #       75%    287.500000  235.00000   200.0
                 #       max    300.000000  350.00000   200.0
+
+print(groups.median(numeric_only=True))##
