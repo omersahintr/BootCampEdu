@@ -88,3 +88,70 @@ print(data_frame)
                 # Morpheus        1         0      3    4
                 # Smith           3         8      9   14
                 # Trinity         3         5      8   18
+
+
+# match (<> == !=) operations:
+print(">2 elements:")
+print(data_frame[data_frame>2])
+                # >2 elements:
+                #           January  February  March  May
+                # Neo           NaN       NaN      3    4
+                # Morpheus      NaN       NaN      3    4
+                # Smith         3.0       8.0      9   14
+                # Trinity       3.0       5.0      8   18
+
+print("<4 elements:")
+print(data_frame[data_frame<4])
+                # <4 elements:
+                #           January  February  March  May
+                # Neo             1       2.0    3.0  NaN
+                # Morpheus        1       0.0    3.0  NaN
+                # Smith           3       NaN    NaN  NaN
+                # Trinity         3       NaN    NaN  NaN
+
+print("=3 elements:")
+print(data_frame[data_frame==3])
+                # =3 elements
+                #           January  February  March  May
+                # Neo           NaN       NaN    3.0  NaN
+                # Morpheus      NaN       NaN    3.0  NaN
+                # Smith         3.0       NaN    NaN  NaN
+                # Trinity       3.0       NaN    NaN  NaN
+
+print("!=3 elements:")
+print(data_frame[data_frame!=3])
+                # !=3 elements
+                #           January  February  March  May
+                # Neo           1.0         2    NaN    4
+                # Morpheus      1.0         0    NaN    4
+                # Smith         NaN         8    9.0   14
+                # Trinity       NaN         5    8.0   18
+
+# just on rows or columns matching
+print(">4 just in May:")
+print(data_frame[data_frame["May"]>4])
+                # >4 just in May:
+                #          January  February  March  May
+                # Smith          3         8      9   14
+                # Trinity        3         5      8   18
+
+# set_index() and reset_index() methods:
+print("reset_index():")
+print(data_frame.reset_index())
+                # reset_index():
+                #       index  January  February  March  May
+                # 0       Neo        1         2      3    4
+                # 1  Morpheus        1         0      3    4
+                # 2     Smith        3         8      9   14
+                # 3   Trinity        3         5      8   18
+
+print("index --> May columns")
+print(data_frame.set_index("May"))
+                # index --> May columns
+                #      January  February  March
+                # May
+                # 4          1         2      3
+                # 4          1         0      3
+                # 14         3         8      9
+                # 18         3         5      8
+
