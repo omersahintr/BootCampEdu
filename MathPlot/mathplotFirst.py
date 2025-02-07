@@ -1,3 +1,2 @@
-import mathplotlib as mp
+import matplotlib as mp
 
-print(mp.__version__)
