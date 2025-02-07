@@ -31,7 +31,7 @@ print(f"Average Salary of Department: \n{averaje_salary_of_department.round(2)}"
                 Name: Salary, dtype: float64
 """
 
-# #4) How does the average salary compare by title (senior - junior) at this company?
+# 4) How does the average salary compare by title (senior - junior) at this company?
 averaje_salary_of_title = data_frame.groupby("Title")["Salary"].mean()
 print(f"Average Salary of Title: \n{averaje_salary_of_title.round(2)}")
 """         Average Salary of Title: 
@@ -43,6 +43,15 @@ print(f"Average Salary of Title: \n{averaje_salary_of_title.round(2)}")
                 Senior         867.78
                 Name: Salary, dtype: float64
 """
+
+#5) On average, how many percent more salary does a senior person earn than a junior person?
+match_avg = data_frame.groupby("Title")["Salary"].mean()
+senior_avg = match_avg["Senior"].round(2)
+junior_avg = match_avg["Junior"].round(2)
+
+percent_avg = (((senior_avg - junior_avg)/senior_avg)*100).round(2)
+print(f"{senior_avg} % {junior_avg} = {percent_avg}")
+                # 867.78 % 440.62 = 49.22
 
 
 
