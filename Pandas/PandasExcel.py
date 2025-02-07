@@ -51,7 +51,7 @@ junior_avg = match_avg["Junior"].round(2)
 
 percent_avg = (((senior_avg - junior_avg)/senior_avg)*100).round(2)
 print(f"{senior_avg} % {junior_avg} = {percent_avg}")
-                # 867.78 % 440.62 = 49.22
+"""             867.78 % 440.62 = 49.22 """
 
 
 
