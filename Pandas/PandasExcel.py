@@ -50,11 +50,36 @@ senior_avg = match_avg["Senior"].round(2)
 junior_avg = match_avg["Junior"].round(2)
 
 percent_avg = (((senior_avg - junior_avg)/senior_avg)*100).round(2)
-print(f"{senior_avg} % {junior_avg} = {percent_avg}")
-"""             867.78 % 440.62 = 49.22 """
+print(f"mean differences= {senior_avg} % {junior_avg} = {percent_avg}")
+"""             867.78 % 440.62 = 49.22 
+"""
+
+# 6) How much more, on average, is the salary of a senior person
+# in the software development department compared to a junior person?
+
+salaries_developers = data_frame.groupby("Department")["Salary"].mean()
+salaries_juniors = data_frame.groupby("Title")["Salary"].mean()
+
+salary_minus = (salaries_developers["Software Development"] - salaries_juniors["Junior"]).round(2)
+print(f"Developers - Juniors= {salary_minus}")
+"""             Developers - Juniors= 385.78
+"""
+
+#7) How much more salary does a c-level person in the finance department earn on average
+# compared to a mid-senior person?
+
+salary_finance = data_frame.loc[data_frame["Department"] == "Finance"].groupby("Title")["Salary"].mean()
 
 
+print(f"Result(7) = {salary_finance["C-level"]-salary_finance["Mid-Senior"]}")
+"""             Result(7) = 240.0
+"""
 
+#8) How many times more c-level employees are there in the
+# software development department than in the marketing department?
 
-
-
+developer_count = (data_frame.loc[data_frame["Department"] == "Software Development"]).groupby("Title")["Salary"].count()
+marketing_count = (data_frame.loc[data_frame["Department"] == "Marketing"]).groupby("Department")["Salary"].count()
+print(f"Result(8) = {developer_count["C-level"] + marketing_count["Marketing"]}")
+"""             Result(8) = 24
+"""
