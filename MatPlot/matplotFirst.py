@@ -1,21 +1,20 @@
-import matplotlib as mp
+import matplotlib as mpl
 import matplotlib.pyplot as plt 
 import numpy as np
 import pandas as pd
-import requests as rq
-from io import StringIO
-
-start_date = "2025-02-06%2010:00:00"
-end_date = "2025-02-07%2010:00:00"
-max_mag = 9.0
-min_mag = 2.0
-url = f"https://servisnet.afad.gov.tr/apigateway/deprem/apiv2/event/filter?minmag={min_mag}&maxmag={max_mag}&start={start_date}&end={end_date}&format=csv"
-
-s = rq.get(url).text
-c = pd.read_csv(StringIO(s))
-print(c[["Date","Rms","Location","Magnitude"]])
 
 
+age = [25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45]
+height = [168, 134, 210, 174, 176, 188, 180, 150, 184, 121, 188]
+
+np_age = np.array(age)
+np_height = np.array(height)
+
+plt.xlabel('Age')
+plt.ylabel('Height')
+plt.title('Age vs Height')
+plt.plot(np_age, np_height,"g") # g is for green color
+plt.show()
 
 
 
