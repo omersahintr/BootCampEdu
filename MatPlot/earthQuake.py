@@ -18,9 +18,9 @@ def earth_quake():
     start_date = "2025-02-01%2000:00:00"
     end_date = f"{year}-{month}-{day}%20{hour}:{minute}:{second}"
     locat = "Ege Denizi"
-    # end_date = "2025-02-02%2000:00:00"
+    # end_date = "2025-01-15%2000:00:00"
     max_mag = 9.0
-    min_mag = 2.0
+    min_mag = 4.0
     url = f"https://servisnet.afad.gov.tr/apigateway/deprem/apiv2/event/filter?minmag={min_mag}&maxmag={max_mag}&start={start_date}&end={end_date}&format=csv"
 
     s = rq.get(url).text
