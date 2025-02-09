@@ -31,6 +31,24 @@ plt.show() # display the graph"""
 
 
 
+new_numpay11 = np.linspace(0, 10, 20) # 20 numbers between 0 and 10
+new_numpay22 = new_numpay11 ** 2 # square of each number in new_numpay1
+print(new_numpay22)
+
+figures = plt.figure() # create a figure object
+coord = figures.add_axes([0.1, 0.1, 0.8, 0.8]) # add axes to the figure
+coord.plot(new_numpay11, new_numpay22, 'b') # b is for blue color
+coord.set_xlabel('X-axis') # x-axis label
+coord.set_ylabel('Y-axis') # y-axis label
+coord.set_title('Max Chart') # title of the graph
+
+coord2 = figures.add_axes([0.2, 0.5, 0.4, 0.3]) # add axes to the figure
+coord2.plot(new_numpay22, new_numpay11, 'r') # r is for red color
+coord2.set_xlabel('X-axis') # x-axis label
+coord2.set_ylabel('Y-axis') # y-axis label
+coord2.set_title('Min Chart') # title of the graph
+
+plt.show() # display the graph
 
 
 
