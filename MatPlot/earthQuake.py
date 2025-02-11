@@ -37,10 +37,9 @@ def earth_quake():
 
     """plt.scatter(quake_plt["Date"], quake_plt["Magnitude"], color="red", label="Earthquake")
     plt.show()"""
-
-    area = np.pi * (5 * quake_plt["Magnitude"]) ** 2
-    colors = np.random.rand()
-    plt.scatter(quake_plt["Date"], quake_plt["Magnitude"], alpha=0.5, c="red", label="Earthquake")
+    
+    #plt.scatter(quake_plt["Date"], quake_plt["Magnitude"], alpha=0.5, c="red", label="Earthquake")
+    plt.plot(quake_plt["Date"], quake_plt["Magnitude"], "r+-")
     plt.title("Ege Denizi Earthquake")
     plt.xlabel("Date")
     plt.ylabel("Magnitude")
