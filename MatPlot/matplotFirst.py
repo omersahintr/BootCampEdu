@@ -49,7 +49,7 @@ coord2.set_ylabel('Y-axis') # y-axis label
 coord2.set_title('Min Chart') # title of the graph"""
 
 ## Create a subplots() object
-np_distance = np.linspace(0, 10, 20) # 20 numbers between 0 and 10
+"""np_distance = np.linspace(0, 10, 20) # 20 numbers between 0 and 10
 np_time = np_distance ** 1.3 # power 1.3 of each number in new_numpay1
 
 (fig1,ax1) = plt.subplots() # create subplots object
@@ -59,16 +59,16 @@ ax1.plot(np_time, np_distance, color="000000", alpha=0.2, linewidth=6) # color a
 
 new_numpay1 = np.linspace(0, 10, 20) # 20 numbers between 0 and 10
 new_numpay2 = new_numpay1 ** 2 # square of each number in new_numpay1
-print(new_numpay2)
+print(new_numpay2)"""
 
 # Other way to create a subplots() object
-"""new_numpay3 = np.linspace(0, 10, 20) # 20 numbers between 0 and 10
+new_numpay3 = np.linspace(0, 10, 20) # 20 numbers between 0 and 10
 fig2, ax2 = plt.subplots() # create subplots object
 ax2.plot(new_numpay3, new_numpay3 + 3, color="#22EE11", linewidth=4.5) # r is for red color
 
-"""
 
-plt.show() # display the graph
+
+plt.show() # display the graph$$$$
 
 
 
