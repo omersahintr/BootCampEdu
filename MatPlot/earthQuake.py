@@ -39,7 +39,7 @@ def earth_quake():
     plt.show()"""
     
     #plt.scatter(quake_plt["Date"], quake_plt["Magnitude"], alpha=0.5, c="red", label="Earthquake")
-    plt.plot(quake_plt["Date"], quake_plt["Magnitude"], "r+-")
+    plt.plot(quake_plt["Date"], quake_plt["Magnitude"], marker="x", linestyle=":", color="#00AA11", label="Earthquake")
     plt.title("Ege Denizi Earthquake")
     plt.xlabel("Date")
     plt.ylabel("Magnitude")
