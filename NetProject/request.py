@@ -1,6 +1,7 @@
 import requests as req
 
 
+
 ## request method
 r  = req.get('https://github.com/omersahintr/BootCampEdu/blob/main/NetProject/earth-quake.json')
 
