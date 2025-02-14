@@ -9,8 +9,8 @@ import datetime as dt
 # VARIABLES:
 start_date_year = "2025"
 start_date_month = "02"
-start_date_day = "13"
-start_date_hour = "00"
+start_date_day = "01"
+start_date_hour = "20"
 start_date_minute = "00"
 start_date_second = "00"
 
@@ -22,6 +22,11 @@ end_date_hour = str(now.hour)
 end_date_minute = str(now.minute)
 end_date_second = str(now.second)
 
+locat = "Ege Denizi"
+provinc = "İzmir"
+country = "Türkiye"
+mag = 3.0
+
 # RESPONSE FUNCTION:
 def response_url():
     i=0
@@ -32,15 +37,15 @@ def response_url():
     response = req.get(url)
     if response.status_code == 200:   
         for query in response.json():
-            i+=1
-            #print(i,"-",query["date"],"-",query["location"],"-",query["province"],"-",query["magnitude"])
-            dict.update({"Date":query["date"],"Location":query["location"],"Province":query["province"],"Magnitude":query["magnitude"]})
-    return dict
-
+            if query["country"] == country and float(query["magnitude"])>mag:
+                i+=1
+                plt.scatter((query["date"])[0:10], float(query["magnitude"]), color="red")
+                print(f"{i} - {query["date"][0:10]}-{query["location"]}-{query["magnitude"]}")
+        plt.show()
 
 response_url()
-print(response_url())
+
 
 # DATAFRAME AND CHARTS FUNCTION:
 def chart_json():
-    dd=""
+    pass
