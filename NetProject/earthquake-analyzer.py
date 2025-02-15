@@ -1,10 +1,9 @@
-# IMPORT MODULES:
+# IMPORT MODULES: @requests, @matplotlib, @pandas, @datetime
 import requests as req
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import pandas as pd
 import datetime as dt
-
 
 # VARIABLES:
 start_date_year = "2024"
@@ -23,7 +22,7 @@ end_date_minute = str(now.minute)
 end_date_second = str(now.second)
 
 locator = "Ege Denizi"
-mag = 3.0
+mag = 4.0
 
 # RESPONSE FUNCTION:
 def response_url():
