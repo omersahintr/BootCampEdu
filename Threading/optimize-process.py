@@ -55,7 +55,7 @@ def get_web_thread(urls):
 
 urls = ['https://postman-echo.com/delay/2'] * 8 # 8 times request delay 2 seconds
     
-get_web_thread(urls) 
+get_web_thread(urls) #####
                     # <ThreadingOptimizer(Thread-1, stopped 123145345273856)>
                     #<ThreadingOptimizer(Thread-2, stopped 123145362063360)>
                     #<ThreadingOptimizer(Thread-3, stopped 123145378852864)>
