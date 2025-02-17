@@ -1,3 +1,4 @@
+
 import threading
 import requests as req
 import time
@@ -64,3 +65,4 @@ get_web_thread(urls)
                     #<ThreadingOptimizer(Thread-7, stopped 123145446010880)>
                     #<ThreadingOptimizer(Thread-8, stopped 123145462800384)>
                     #Time: 4.561605930328369
+
