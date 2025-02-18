@@ -11,8 +11,8 @@ async def get_web_async_wrapper(urls):
     
     async with aiohttp.ClientSession() as session:
         for url in urls:
-            async with session.get(url) as response:
-                jason_data.append(await response.json())
+            async with session.get(url) as resp:
+                jason_data.append(await resp.json())
 
 
     end_time = time.time()
