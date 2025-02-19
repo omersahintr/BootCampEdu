@@ -1,0 +1,11 @@
+admin
+drive
+wp
+login
+gpt
+ai 
+buy
+video
+image
+code
+test
