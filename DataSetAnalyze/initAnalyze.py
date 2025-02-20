@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-import seaborn as sns
+##import seaborn as sns
 import matplotlib as mpl
 
 data_file = 'train.csv'
