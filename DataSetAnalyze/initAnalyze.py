@@ -5,8 +5,14 @@ import matplotlib.pyplot as plt
 ##import seaborn as sns
 import matplotlib as mpl
 
-data_file = 'train.csv'
-
+data_file = "DataSetAnalyze/train.csv"
 dataset = pd.read_csv(data_file)
 
-print(dataset.head())
+
+plt.figure(figsize=(18, 10))
+sns.heatmap(dataset.corr(), annot=True, fmt=".2f", cmap="coolwarm")
+plt.show()
+
+
+
+print(dataset)
