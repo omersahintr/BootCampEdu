@@ -160,4 +160,4 @@ def main_counter(url):
     except Exception as e:
         messagebox.showerror("Connecting Error","Error code: " + str(e))
 
-window.mainloop()
+window.mainloop() # end of codes
