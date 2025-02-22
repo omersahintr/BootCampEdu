@@ -1,11 +1,12 @@
-import requests as req
+#@Web Site Headings, Link Hrefs and Images Analysing@ #
+import random
+from sys import exception
+
 from bs4 import BeautifulSoup
 import tkinter as tk
 from tkinter import scrolledtext
-from tkinter import ttk
+from tkinter import messagebox
 import requests as req
-
-url_static = "https://github.com/omersahintr/BootCampEdu/"
 
 ## Create a Window with Tkinter Library ##
 window = tk.Tk()
@@ -40,10 +41,10 @@ entryAddress = tk.Entry(font=("Verdana",12,"normal"), width=40)
 
 # Scrolled Text Objects Creating for Windows
 textResult = scrolledtext.ScrolledText(font=("courier",14),width=100, height=40)
-textResult.insert(tk.INSERT,chars="hello message\ngoodbye")
 
 # Button Objects Creating for Window:
-sendButton = tk.Button(text="Start Scan", font=("Arial",14,"bold"), command=lambda:heading_counter(entryAddress.get()))
+sendButton = tk.Button(text="Start Scan", font=("Arial",14,"bold"), command=lambda:main_counter(entryAddress.get()))
+saveFileButton = tk.Button(text="Save File", font=("Arial",14,"bold"), command=lambda:saveFileAs())
 
 # Check Button Objects for Window:
 chc_val = tk.BooleanVar(); link_val = tk.BooleanVar(); image_val = tk.BooleanVar()
@@ -62,7 +63,7 @@ checkHead.place(x=10, y=75)
 checkLink.place(x=100, y=75)
 checkImage.place(x=180, y=75)
 
-y1=180; y2=210; x1=10; x2=15
+y1=180; y2=210; x1=10; x2=15 # static axis values
 labelResults.place(x=x1,y=150)
 labelH1Count.place(x=x1,y=y1)
 labelH1.place(x=x2,y=y2)
@@ -79,66 +80,84 @@ labelLink.place(x=x2+500,y=y2)
 
 labelSourceCode.place(x=x1,y=y1+70)
 textResult.place(x=x1, y=y1+100)
+saveFileButton.place(x=x1,y=y1+700)
 
+## SAVE DATA TO TEXT FILE FUNCTION ##
+def saveFileAs():
+    try:
+        fileName = "request"+str(random.randint(1,3000))+".txt"
+        file = open(fileName,"x")
+        file.write(textResult.get("1.0","end"))
+        file.close()
+        messagebox.showinfo(title="File Saved", message="Data was saved to ./"+fileName)
+    except Exception as e:
+        messagebox.showerror(title="File Saved", message=str(e))
 
+## MAIN COUNTER AND ANALYZER FUNCTION ##
+def main_counter(url):
+    try:
+        textResult.delete("1.0", "end")
+        if url and (chc_val or link_val or image_val):
+            connectUrl = req.get(url)
+            soupWebText = BeautifulSoup(connectUrl.text, "html.parser")
 
-def heading_counter(url):
-    if url and (chc_val or link_val or image_val):
-        connectUrl = req.get(url)
-        soupWebText = BeautifulSoup(connectUrl.text, "html.parser")
+            if chc_val.get() == 1:
+                textResult.insert(tk.INSERT, chars=(f"----------- HEADINGS: -----------\n"))
+                h1_1 = 0
+                for h1s in soupWebText.find_all("h1"):
+                    if h1s.text != None:
+                        h1_1+= 1
+                        textResult.insert(tk.INSERT, chars=(f"{h1_1} - H1 - {h1s.text}\n"))
+                labelH1.config(text=h1_1)
+                h2_1 = 0
+                for h2s in soupWebText.find_all("h2"):
+                    if h2s.text != None:
+                        h2_1 += 1
+                        textResult.insert(tk.INSERT, chars=(f"  {h2_1} - H2 - {h2s.text}\n"))
+                labelH2.config(text=h2_1)
+                h3_1 = 0
+                for h3s in soupWebText.find_all("h3"):
+                    if h3s.text != None:
+                        h3_1 += 1
+                        textResult.insert(tk.INSERT, chars=(f"    {h3_1} - H3 - {h3s.text}\n"))
+                labelH3.config(text=h3_1)
+                h4_1 = 0
+                for h4s in soupWebText.find_all("h4"):
+                    if h4s.text != None:
+                        h4_1 += 1
+                        textResult.insert(tk.INSERT, chars=(f"      {h4_1} - H4 - {h4s.text}\n"))
+                labelH4.config(text=h4_1)
+            else:
+                labelH1.config(text="-"); labelH2.config(text="-")
+                labelH3.config(text="-"); labelH4.config(text="-")
 
-        if chc_val.get() == 1:
-            h1_1 = 0
-            for h1s in soupWebText.find_all("h1"):
-                if h1s.text != None:
-                    h1_1+= 1
-            labelH1.config(text=h1_1)
-            h2_1 = 0
-            for h2s in soupWebText.find_all("h2"):
-                if h2s.text != None:
-                    h2_1 += 1
-            labelH2.config(text=h2_1)
-            h3_1 = 0
-            for h3s in soupWebText.find_all("h3"):
-                if h3s.text != None:
-                    h3_1 += 1
-            labelH3.config(text=h3_1)
-            h4_1 = 0
-            for h4s in soupWebText.find_all("h4"):
-                if h4s.text != None:
-                    h4_1 += 1
-            labelH4.config(text=h4_1)
+            if link_val.get() == 1:
+                textResult.insert(tk.INSERT, chars=(f"\n\n\n\n----------- URL LINKS: -----------\n"))
+                lnk_1 = 0
+                for links in soupWebText.find_all("a"):
+                    foundLinks = links.get("href")
+                    if links.text != None:
+                        lnk_1 += 1
+                        textResult.insert(tk.INSERT, chars=(f"{lnk_1}- {links.text}:\n {foundLinks}\n"))
+                labelLink.config(text=lnk_1)
+            else:
+                labelLink.config(text="-")
+
+            if image_val.get():
+                textResult.insert(tk.INSERT, chars=(f"\n\n\n\n----------- IMAGES: -----------\n"))
+                img_1 = 0
+                for imgs in soupWebText.find_all("img"):
+                    foundImages = imgs.get("src")
+                    if imgs.text != None:
+                        img_1 += 1
+                        textResult.insert(tk.INSERT, chars=(f"{img_1}- {foundImages}\n"))
+                labelImage.config(text=img_1)
+            else:
+                labelImage.config(text="-")
+            labelStatus.config(text="Status: Finish Scan", fg="#02df5d")
         else:
-            labelH1.config(text=0); labelH2.config(text=0)
-            labelH3.config(text=0); labelH4.config(text=0)
-
-        if link_val.get() == 1:
-            lnk_1 = 0
-            for links in soupWebText.find_all("a"):
-                if links.text != None:
-                    lnk_1 += 1
-            labelLink.config(text=lnk_1)
-        else:
-            labelLink.config(text=0)
-
-        if image_val.get():
-            img_1 = 0
-            for imgs in soupWebText.find_all("img"):
-                if imgs.text != None:
-                    img_1 += 1
-            labelImage.config(text=img_1)
-        else:
-            labelImage.config(text=0)
-        labelStatus.config(text="Status: Finish Scan", fg="#02df5d")
-    else:
-        labelStatus.config(text="Status: Please enter an address or select", fg="red")
-
-
-def query(url):
-    pass
-
-
-
-
+            labelStatus.config(text="Status: Please enter an address or select", fg="red")
+    except Exception as e:
+        messagebox.showerror("Connecting Error","Error code: " + str(e))
 
 window.mainloop()
