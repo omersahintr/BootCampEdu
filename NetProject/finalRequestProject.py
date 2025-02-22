@@ -5,14 +5,11 @@ import requests as req
 
 url_static = "https://github.com/omersahintr/BootCampEdu/"
 
-
-
 ## Create a Window with Tkinter Library ##
 window = tk.Tk()
 window.title("Web Site Headings Counter & Analyzer")
 window.minsize(width=900, height=1000)
 ###########################################
-
 
 # Labels creating:
 labelAddress = tk.Label(text="Site Address:", fg="black", font=("Verdana",12,"bold"))
@@ -87,9 +84,22 @@ def heading_counter(url):
     if url:
         labelStatus.config(text=f"Scanning to: {entryAddress.get()}", fg="white")
 
-        labelSourceCode.config(text=chc_val.get())
+        if chc_val.get() == 1:
+            labelH2.config(text="success")
+        else:
+            labelH2.config(text="error")
+        if link_val.get() == 1:
+            labelH3.config(text="11")
+        else:
+            labelH3.config(text="00")
+        if image_val.get():
+            labelH1.config(text="11")
+        else:
+            labelH1.config(text="00")
+
+        """labelSourceCode.config(text=chc_val.get())
         labelH1.config(text=link_val.get())
-        labelH2.config(text=image_val.get())
+        labelH2.config(text=image_val.get())"""
 
     else:
         labelStatus.config(text="Status: Please enter an address", fg="red")
