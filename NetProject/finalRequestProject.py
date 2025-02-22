@@ -12,7 +12,9 @@ window.minsize(width=900, height=1000)
 # Labels creating:
 labelAddress = tk.Label(text="Site Address:", fg="black", font=("Verdana",12,"bold"))
 
-labelStatus = tk.Label(text="Status: Ready",  font=("Verdana",18,"bold"), fg="green")
+labelStatus = tk.Label(text="Status: Ready", bg="#545a5e", font=("Verdana",18,"italic"), fg="white")
+
+labelSourceCode = tk.Label(text="Source Code:", font=("Verdana",14,"bold"))
 
 labelH1Count = tk.Label(text="H1", fg="black", bg="#02df5d", font=("Verdana",14,"underline"))
 
@@ -44,7 +46,8 @@ labelResults = tk.Label(text="RESULTS:", fg="black", font=("Verdana",16,"bold"))
 # Entry Objects Creating for Window
 entryAddress = tk.Entry(font=("Verdana",12,"normal"), width=40)
 
-
+# Text Objects Creating for Windows
+textResult = tk.Text(width=100, height=50)
 
 # Button Objects Creating for Window
 sendButton = tk.Button(text="Start Scan", font=("Arial",14,"bold"), command=lambda:heading_counter(entryAddress.get()))
@@ -72,11 +75,14 @@ labelImage.place(x=x2+400,y=y2)
 labelLinkCount.place(x=x1+500,y=y1)
 labelLink.place(x=x2+500,y=y2)
 
+labelSourceCode.place(x=x1,y=y1+70)
+textResult.place(x=x1, y=y1+100)
+
 
 
 def heading_counter(url):
     if url:
-        labelStatus.config(text=f"Scanning to: {entryAddress.get()}", fg="green")
+        labelStatus.config(text=f"Scanning to: {entryAddress.get()}", fg="white")
     else:
         labelStatus.config(text="Status: Please enter an address", fg="red")
 
