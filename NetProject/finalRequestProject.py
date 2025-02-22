@@ -85,7 +85,7 @@ saveFileButton.place(x=x1,y=y1+700)
 ## SAVE DATA TO TEXT FILE FUNCTION ##
 def saveFileAs():
     try:
-        fileName = "request"+str(random.randint(1,3000))+".txt"
+        fileName = "request"+str(random.randint(1,9000))+".txt"
         file = open(fileName,"x")
         file.write(textResult.get("1.0","end"))
         file.close()
