@@ -1,3 +1,5 @@
+import requests as req
+from bs4 import BeautifulSoup
 import tkinter as tk
 from tkinter import scrolledtext
 from tkinter import ttk
@@ -81,31 +83,59 @@ textResult.place(x=x1, y=y1+100)
 
 
 def heading_counter(url):
-    if url:
-        labelStatus.config(text=f"Scanning to: {entryAddress.get()}", fg="white")
+    if url and (chc_val or link_val or image_val):
+        connectUrl = req.get(url)
+        soupWebText = BeautifulSoup(connectUrl.text, "html.parser")
 
         if chc_val.get() == 1:
-            labelH2.config(text="success")
+            h1_1 = 0
+            for h1s in soupWebText.find_all("h1"):
+                if h1s.text != None:
+                    h1_1+= 1
+            labelH1.config(text=h1_1)
+            h2_1 = 0
+            for h2s in soupWebText.find_all("h2"):
+                if h2s.text != None:
+                    h2_1 += 1
+            labelH2.config(text=h2_1)
+            h3_1 = 0
+            for h3s in soupWebText.find_all("h3"):
+                if h3s.text != None:
+                    h3_1 += 1
+            labelH3.config(text=h3_1)
+            h4_1 = 0
+            for h4s in soupWebText.find_all("h4"):
+                if h4s.text != None:
+                    h4_1 += 1
+            labelH4.config(text=h4_1)
         else:
-            labelH2.config(text="error")
+            labelH1.config(text=0); labelH2.config(text=0)
+            labelH3.config(text=0); labelH4.config(text=0)
+
         if link_val.get() == 1:
-            labelH3.config(text="11")
+            lnk_1 = 0
+            for links in soupWebText.find_all("a"):
+                if links.text != None:
+                    lnk_1 += 1
+            labelLink.config(text=lnk_1)
         else:
-            labelH3.config(text="00")
+            labelLink.config(text=0)
+
         if image_val.get():
-            labelH1.config(text="11")
+            img_1 = 0
+            for imgs in soupWebText.find_all("img"):
+                if imgs.text != None:
+                    img_1 += 1
+            labelImage.config(text=img_1)
         else:
-            labelH1.config(text="00")
-
-        """labelSourceCode.config(text=chc_val.get())
-        labelH1.config(text=link_val.get())
-        labelH2.config(text=image_val.get())"""
-
+            labelImage.config(text=0)
+        labelStatus.config(text="Status: Finish Scan", fg="#02df5d")
     else:
-        labelStatus.config(text="Status: Please enter an address", fg="red")
+        labelStatus.config(text="Status: Please enter an address or select", fg="red")
 
 
-
+def query(url):
+    pass
 
 
 
