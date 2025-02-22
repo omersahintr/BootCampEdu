@@ -1,4 +1,5 @@
 
+
 def Fact(number):
     if number == 0:
         result = 1
