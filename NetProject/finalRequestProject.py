@@ -54,13 +54,12 @@ sendButton = tk.Button(text="Start Scan", font=("Arial",14,"bold"), command=lamb
 
 
 ### PLACE LOCALISER ###
-#labelStatus.grid(row=1,column=0)
 labelStatus.place(x=200, y=10)
 labelAddress.place(x=10, y=40)
 entryAddress.place(x=110, y=40); entryAddress.focus()
 sendButton.place(x=450, y=36)
 
-y1=140; y2=165; x1=10; x2=15
+y1=140; y2=170; x1=10; x2=15
 labelResults.place(x=x1,y=100)
 labelH1Count.place(x=x1,y=y1)
 labelH1.place(x=x2,y=y2)
