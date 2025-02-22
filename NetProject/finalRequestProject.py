@@ -138,7 +138,7 @@ def main_counter(url):
                     foundLinks = links.get("href")
                     if links.text != None:
                         lnk_1 += 1
-                        textResult.insert(tk.INSERT, chars=(f"{lnk_1}- {links.text}:\n {foundLinks}\n"))
+                        textResult.insert(tk.INSERT, chars=(f"{lnk_1}- {links.text}:\n {foundLinks}\n\n"))
                 labelLink.config(text=lnk_1)
             else:
                 labelLink.config(text="-")
@@ -150,7 +150,7 @@ def main_counter(url):
                     foundImages = imgs.get("src")
                     if imgs.text != None:
                         img_1 += 1
-                        textResult.insert(tk.INSERT, chars=(f"{img_1}- {foundImages}\n"))
+                        textResult.insert(tk.INSERT, chars=(f"{img_1}- {foundImages}\n\n"))
                 labelImage.config(text=img_1)
             else:
                 labelImage.config(text="-")
