@@ -17,9 +17,9 @@ def earth_quake():
     hour = now.hour
     minute = now.minute
     second = now.second
-    start_date = "2025-01-01%2000:00:00"
+    start_date = "2025-04-22%2000:00:00"
     end_date = f"{year}-{month}-{day}%20{hour}:{minute}:{second}"
-    locat = "Ege Denizi"
+    locat = "Marmara Denizi"
     # end_date = "2025-01-15%2000:00:00"
     max_mag = 9.0
     min_mag = 3.0
