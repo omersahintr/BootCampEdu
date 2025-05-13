@@ -6,8 +6,8 @@ import pandas as pd
 import datetime as dt
 
 # VARIABLES:
-start_date_year = "2024"
-start_date_month = "10"
+start_date_year = "2025"
+start_date_month = "03"
 start_date_day = "01"
 start_date_hour = "20"
 start_date_minute = "00"
@@ -33,14 +33,15 @@ def response_url():
     #print(req.get(url).status_code)
     
     plt.title(f"{locator} Depremler-{start_date_year}")
-    plt.xlabel("Depth")
+    plt.xlabel("Date")
     plt.ylabel("Magnitude")
+    
     response = req.get(url)
     if response.status_code == 200:   
         for query in response.json():
             if query["province"] == locator and float(query["magnitude"])>mag:
                 i+=1
-                plt.scatter((query["depth"]), float(query["magnitude"]), color="red")
+                plt.scatter((query["date"][0:10]), float(query["magnitude"]), color="red")
                 #plt.plot((query["date"])[0:10], float(query["magnitude"]), color="red")
                 print(f"{i} - {query["date"][0:16]}-{query["location"]}-{query["magnitude"]}--{query["depth"]}")
         plt.show()
